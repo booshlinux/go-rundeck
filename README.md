@@ -63,7 +63,7 @@ There are two ways to use this:
 - request/response types
 - via the unified binary, `rundeck`
 
-### as a library
+### As a library
 
 ```go
 package main
@@ -74,7 +74,19 @@ import (
 )
 
 func main() {
+    // With environment variables
+    // This is assumed that RUNDECK_* variables have been set prior
     client, clientErr := rundeck.NewClientFromEnv()
+    
+    // With configuration
+    // rundeckConfig := &rundeck.ClientConfig{
+    //     BaseURL: <URL>,
+    //     Token: <API Token>,
+    //     VerifySSL: <true|false>,
+    //     APIVersion: <version>,
+    // }
+    // client, clientErr := rundeck.NewClient(rundeckConfig)
+    
     if clientErr != nil {
         log.Fatal(clientErr)
     }
